@@ -1,4 +1,4 @@
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
+
 import { v4 as uuidv4 } from 'uuid';
 import React, { Component } from 'react';
 
@@ -16,13 +16,13 @@ class TodoForm extends Component {
     }
     handleSubmit(evt) {
         evt.preventDefault();
-        this.props.createTodo({ ...this.state, id: uuidv4() });
+        this.props.createTodo({ ...this.state, id: uuidv4(), completed: false });
         this.setState({ task: "" });
     }
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label htmlFor="task">New Todo</label>
+                <label htmlFor="task">New Todo</label><br />
                 <input type="text" name="task" placeholder="New Todo" id="task" value={this.state.task} onChange={this.handleChange} />
                 <button>Add Todo</button>
             </form>
